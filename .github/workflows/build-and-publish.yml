@@ -35,7 +35,7 @@ jobs:
             docker push     cr.yandex/crpcddh1vfg912dg1bps/pay-coworkhub:${{ github.sha }}
             
         - name: Deploy Pay.Coworkhub
-          id: deploy-pay.coworkhub
+          id: deploy_pay_coworkhub
           uses: yc-actions/yc-sls-container-deploy@v2
           with:
             yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
