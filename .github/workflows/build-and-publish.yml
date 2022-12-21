@@ -26,13 +26,13 @@ jobs:
                
         - name: Build and push to YCR pay.coworkhub
           env:
-            CR_REGISTRY: crp4odt1er9cmqarghdbAAAAAAAAA
-            CR_REPOSITORY: containers-registryAAAAAAAAAAAA
+            CR_REGISTRY: cr.yandex/crpcddh1vfg912dg1bps
+            CR_REPOSITORY: coworkhub-registry
             IMAGE_TAG: ${{ github.sha }}
           working-directory: .
           run: |
-            docker build -t cr.yandex/crp4odt1er9cmqarghdb/sankirtanAAAAAA:${{ github.sha }} -f ./Dockerfile .
-            docker push     cr.yandex/crp4odt1er9cmqarghdb/sankirtanAAAAAA:${{ github.sha }}
+            docker build -t cr.yandex/crpcddh1vfg912dg1bps/pay-coworkhub:${{ github.sha }} -f ./Dockerfile .
+            docker push     cr.yandex/crpcddh1vfg912dg1bps/pay-coworkhub:${{ github.sha }}
             
         - name: Deploy Pay.Coworkhub
           id: deploy-pay.coworkhub
@@ -40,13 +40,13 @@ jobs:
           with:
             yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
             container-name: pay-coworkhub
-            folder-id: b1gslim9pjl5jan2tbodAAAAAA
-            revision-service-account-id: ajevd85hi4q5rgcernn2AAAAAAA
+            folder-id: b1gp5jqrcufk33kc3jej
+            revision-service-account-id: ajeivh58hhdb7ubm43to
             revision-cores: 1
             revision-memory: 256Mb
             revision-core-fraction: 5
             revision-concurrency: 8
-            revision-image-url: cr.yandex/crp4odt1er9cmqarghdb/sankirtanaAAAAAA:${{ github.sha }}
+            revision-image-url: cr.yandex/crpcddh1vfg912dg1bps/pay-coworkhub:${{ github.sha }}
             revision-execution-timeout: 60
             revision-provisioned: 1
             revision-env: YA_OBJECT_STORAGE_SECRET_KEY=${{ secrets.YA_OBJECT_STORAGE_SECRET_KEY }}
