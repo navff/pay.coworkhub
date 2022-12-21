@@ -5,6 +5,10 @@ builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
+var port = Environment.GetEnvironmentVariable("PORT");
+port = port ?? "8080";
+builder.WebHost.UseUrls($"http://localhost:{port}");
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
