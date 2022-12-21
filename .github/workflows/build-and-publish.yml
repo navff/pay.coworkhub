@@ -29,9 +29,9 @@ jobs:
             CR_REGISTRY: cr.yandex/crpcddh1vfg912dg1bps
             CR_REPOSITORY: coworkhub-registry
             IMAGE_TAG: ${{ github.sha }}
-          working-directory: .
+          working-directory: ./Pay.Web/
           run: |
-            docker build -t cr.yandex/crpcddh1vfg912dg1bps/pay-coworkhub:${{ github.sha }} -f ./Pay.Web/Dockerfile .
+            docker build -t cr.yandex/crpcddh1vfg912dg1bps/pay-coworkhub:${{ github.sha }} -f ./Dockerfile .
             docker push     cr.yandex/crpcddh1vfg912dg1bps/pay-coworkhub:${{ github.sha }}
             
         - name: Deploy Pay.Coworkhub
