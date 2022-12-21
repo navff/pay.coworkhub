@@ -5,10 +5,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Pay.Web/Pay.Web.csproj", "Pay.Web/"]
-RUN dotnet restore "Pay.Web/Pay.Web.csproj"
+COPY ["Pay.Web.csproj", "./"]
+RUN dotnet restore "Pay.Web.csproj"
 COPY . .
-WORKDIR "/src/Pay.Web"
+WORKDIR "/src/"
 RUN dotnet build "Pay.Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
