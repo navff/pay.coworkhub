@@ -48,5 +48,5 @@ jobs:
             revision-concurrency: 8
             revision-image-url: cr.yandex/crpcddh1vfg912dg1bps/pay-coworkhub:${{ github.sha }}
             revision-execution-timeout: 60
-            revision-provisioned: 1
+            # revision-provisioned: 1
             revision-env: YA_OBJECT_STORAGE_SECRET_KEY=${{ secrets.YA_OBJECT_STORAGE_SECRET_KEY }}
